@@ -1,12 +1,7 @@
-import React from "react";
 import { useState } from 'react'
 import './Home.css'
-import { withExperiment } from "../probat/runtime";
-import { PROBAT_COMPONENTS, PROBAT_REGISTRIES } from "../probat/index";
 
-const __PROBAT_KEY__ = "src/Home.jsx";
-
-const Home = () => {
+function Home() {
   const [count, setCount] = useState(0)
 
   return (
@@ -30,10 +25,5 @@ const Home = () => {
   )
 }
 
-export default (() => {
-  const meta = PROBAT_COMPONENTS[__PROBAT_KEY__];
-  const reg  = PROBAT_REGISTRIES[__PROBAT_KEY__] as Record<string, React.ComponentType<any>> | undefined;
-  return (meta?.proposalId && reg)
-    ? withExperiment<any>(Home as any, { proposalId: meta.proposalId, registry: reg })
-    : Home;
-})();
+export default Home
+
