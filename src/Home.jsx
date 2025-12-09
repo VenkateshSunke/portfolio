@@ -1,7 +1,10 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { withExperiment } from "@probat/react";
 import './Home.css'
 
-function Home() {
+const __PROBAT_COMPONENT_PATH__ = "src/Home.jsx";
+
+function Home({ probat }) {
   const [count, setCount] = useState(0)
 
   return (
@@ -10,7 +13,10 @@ function Home() {
         <h1>Welcome to My Portfolio</h1>
         <p>This is a React.js application built with JSX files.</p>
         <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
+          <button 
+            onClick={() => setCount((count) => count + 1)}
+            data-probat-conversion="true"
+          >
             Count is {count}
           </button>
           <p>
@@ -25,5 +31,8 @@ function Home() {
   )
 }
 
-export default Home
-
+// Probat Generate Lines - NEW API: No config/registry files needed!
+// repoFullName is read from ProbatContext (set in layout.tsx or ProbatProvider)
+export default withExperiment(Home, {
+    componentPath: __PROBAT_COMPONENT_PATH__
+});
