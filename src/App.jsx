@@ -1,12 +1,19 @@
 import Home from './Home'
+import { ProbatProvider } from "@probat/react";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <ProbatProvider 
+      apiBaseUrl="https://gushi.onrender.com"
+      clientKey="" 
+      environment="prod"
+      repoFullName="VenkateshSunke/portfolio"
+    >
+      <div className="App">
+        <Home />
+      </div>
+    </ProbatProvider>
   )
 }
 
 export default App
-
