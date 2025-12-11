@@ -1,27 +1,18 @@
-import React from "react";
 import { useState } from 'react'
-import { withExperiment } from "@probat/react";
-import './Home.css'
-
-const __PROBAT_COMPONENT_PATH__ = "src/Home.jsx";
+import '../../src/Home.css'
 
 function Home({ probat }) {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="home">
+    <div className="home" style={{ backgroundColor: '#FFFFFF', color: '#242424', minHeight: '100vh' }}>
       <header className="home-header">
         <h1>Welcome to My Portfolio</h1>
         <p>This is a React.js application built with JSX files.</p>
         <div className="card">
-          <button
-            onClick={(e) => {
-              e.stopPropagation(); // CRITICAL: Prevents wrapper from also tracking
-              if (probat?.trackClick) {
-                probat.trackClick();
-              }
-              setCount((count) => count + 1);
-            }}
+          <button 
+            onClick={() => setCount((count) => count + 1)}
+            style={{ backgroundColor: '#646CFF', color: '#FFFFFF', border: 'none' }}
             data-probat-conversion="true"
           >
             Count is {count}
@@ -38,6 +29,4 @@ function Home({ probat }) {
   )
 }
 
-export default withExperiment(Home, {
-    componentPath: __PROBAT_COMPONENT_PATH__
-});
+export default Home
